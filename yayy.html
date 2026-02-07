@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Yaaaayyy</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #f7b7cf;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    img {
+      max-width: 320px;
+      border-radius: 16px;
+    }
+
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 48px;
+      color: #ff2d55;
+    }
+
+    .countdown {
+      font-size: 22px;
+      color: #a1002b;
+      font-weight: bold;
+    }
+
+    /* ❤️ SRCA */
+    .heart {
+      position: absolute;
+      bottom: -30px;
+      animation: floatUp linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-120vh) scale(1.6);
+        opacity: 0;
+      }
+    }
+
+    /* 🎊 KONFETE */
+    .confetti {
+      position: absolute;
+      top: -20px;
+      animation: fall linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(130vh) rotate(900deg);
+        opacity: 0;
+      }
+    }
+
+    .circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .strip {
+      width: 6px;
+      height: 20px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="content">
+    <img src="slika1.png" alt="Happy image">
+    <h1>Yaaaayyy!!!! 🎉❤️</h1>
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <script>
+    // ⏳ COUNTDOWN (dani, sati, minuti, sekunde)
+    function updateCountdown() {
+      const now = new Date();
+      let year = now.getFullYear();
+      let target = new Date(year, 1, 14, 0, 0, 0); // 14. februar 00:00
+
+      if (now > target) {
+        target = new Date(year + 1, 1, 14, 0, 0, 0);
+      }
+
+      const diff = target - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerText =
+        `${days}d ${hours}h ${minutes}m ${seconds}s until Valentine’s Day 💘`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const colors = ["#ff2d55", "#ffd60a", "#32d74b", "#0a84ff", "#ff9f0a"];
+
+    // ❤️ SRCA
+    setInterval(() => {
+      for (let i = 0; i < 3; i++) {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.innerText = "❤️";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.fontSize = (22 + Math.random() * 30) + "px";
+        h.style.animationDuration = (3 + Math.random() * 2) + "s";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 5000);
+      }
+    }, 180);
+
+    // 🎊 KONFETE (krugovi + trakice)
+    setInterval(() => {
+      for (let i = 0; i < 8; i++) {
+        const c = document.createElement("div");
+        c.classList.add("confetti", Math.random() > 0.5 ? "circle" : "strip");
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDuration = (2 + Math.random() * 2) + "s";
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5000);
+      }
+    }, 120);
+  </script>
+
+</body>
+</html>

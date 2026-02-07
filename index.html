@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Početna</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f7b7cf; /* bebi roze */
+      font-family: Arial, sans-serif;
+      perspective: 800px; /* za 3D nagib */
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    button {
+      width: 220px;   /* VEĆE */
+      height: 220px;
+      border-radius: 50%;
+      border: none;
+
+      background: linear-gradient(145deg, #ff3b3b, #c40000);
+      color: white;
+      font-size: 26px;
+      font-weight: bold;
+      cursor: pointer;
+
+      /* 3D nagib ka napred */
+      transform: rotateX(15deg);
+
+      /* 3D senka */
+      box-shadow:
+        0 18px 0 #8b0000,
+        0 30px 40px rgba(0, 0, 0, 0.4);
+
+      transition: all 0.15s ease;
+    }
+
+    button:active {
+      transform: rotateX(15deg) translateY(10px);
+      box-shadow:
+        0 8px 0 #8b0000,
+        0 14px 20px rgba(0, 0, 0, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+  <a href="stranica.html">
+    <button>Click here</button>
+  </a>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Valentine</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #f7b7cf;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    img {
+      max-width: 300px;
+      border-radius: 16px;
+    }
+
+    .text {
+      margin: 20px 0 15px;
+      font-size: 34px;
+      color: red;
+      font-weight: bold;
+    }
+
+    .heart {
+      display: inline-block;
+      animation: pulse 1.2s infinite;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .choice {
+      padding: 16px 32px;
+      font-size: 22px;
+      border-radius: 14px;
+      background: white;
+      color: red;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    .choice:active {
+      transform: scale(0.95);
+    }
+
+    .loading {
+      display: none;
+      font-size: 36px;
+      color: red;
+      font-weight: bold;
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="main">
+    <img src="slika.png" alt="Valentine image">
+
+    <div class="text">
+      Will you be my valentine, Maja? <span class="heart">❤️</span>
+    </div>
+
+    <div class="buttons">
+      <div class="choice" onclick="goNext()">Yes</div>
+      <div class="choice" onclick="goNext()">Of course</div>
+    </div>
+  </div>
+
+  <div class="loading" id="loading">
+    Loading happiness…
+  </div>
+
+  <script>
+    function goNext() {
+      document.getElementById("main").style.display = "none";
+      document.getElementById("loading").style.display = "block";
+
+      setTimeout(() => {
+        window.location.href = "yayy.html";
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
